@@ -1,0 +1,44 @@
+services:
+  mysql:
+    #    platform: linux/x86_64
+    image: mysql:8.0.25
+    container_name: BlogDemo.mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-main}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-main_db}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-main}
+      MYSQL_USER: ${MYSQL_USER:-main}
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - ./runtime/docker/mysql/data:/var/lib/mysql
+      - ./docker/mysql/conf:/etc/mysql/conf.d
+
+  php:
+    build: ./docker/php
+    container_name: BlogDemo.php
+    restart: unless-stopped
+    environment:
+      - PHP_DIR_OWNER=1000
+      - RUN_USER=1000
+    volumes:
+      - .:/var/www
+      - ./runtime/docker/php/data:/var/php
+
+  nginx:
+    image: nginx:latest
+    container_name: BlogDemo.nginx
+    restart: unless-stopped
+    ports:
+      - ${NGINX_PORT}:80
+    environment:
+      - TZ=Europe/Istanbul
+    volumes:
+      - ./runtime/docker/nginx/logs:/var/log/nginx
+      - .:/var/www:ro
+      - ./docker/nginx/conf:/etc/nginx/conf.d
+    depends_on:
+      - php
+
+
