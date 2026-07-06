@@ -1,0 +1,14 @@
+$primary-color: #2b6cb0;
+$text-color: #1a202c;
+$spacing: 16px;
+
+body {
+  margin: 0;
+  padding: $spacing * 2;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: $text-color;
+
+  h1 {
+    color: $primary-color;
+  }
+}

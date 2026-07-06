@@ -1,0 +1,16 @@
+{
+    "name": "blogdemo/blogdemo",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "smarty/smarty": "^5.1",
+        "scssphp/scssphp": "^1.13"
+    },
+    "scripts": {
+        "build-scss": "php bin/build-assets.php"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}

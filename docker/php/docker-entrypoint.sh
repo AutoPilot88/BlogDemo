@@ -26,6 +26,14 @@ check_and_create sessions
 check_and_create upload
 check_and_create log
 
+if [ -f /var/www/composer.json ] && [ ! -d /var/www/vendor ]; then
+    composer install --working-dir=/var/www --no-interaction --no-progress
+fi
+
+if [ -f /var/www/bin/build-assets.php ]; then
+    php /var/www/bin/build-assets.php
+fi
+
 if [ "$#" -ne 0 ]; then
     exec "$@"
 fi

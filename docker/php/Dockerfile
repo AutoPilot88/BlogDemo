@@ -2,6 +2,8 @@ FROM php:8.2-fpm
 
 ENV TZ=Europe/Istanbul PHP_DIR_OWNER=root PHP_DIR_MODE=770
 
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
 RUN set -ex; \
     echo "${TZ}" > /etc/timezone; \
     ln -sfn /usr/share/zoneinfo/${TZ} /etc/localtime && echo $TZ > /etc/timezone; \
