@@ -2,21 +2,11 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Smarty\Smarty;
+use App\Routes\Web;
+use App\Routing\Router;
 
-$compileDir = __DIR__ . '/../runtime/smarty/compile';
-$cacheDir = __DIR__ . '/../runtime/smarty/cache';
+$router = new Router();
+Web::register($router);
 
-foreach ([$compileDir, $cacheDir] as $dir) {
-    if (!is_dir($dir)) {
-        mkdir($dir, 0775, true);
-    }
-}
-
-$smarty = new Smarty();
-$smarty->setTemplateDir(__DIR__ . '/../templates');
-$smarty->setCompileDir($compileDir);
-$smarty->setCacheDir($cacheDir);
-
-$smarty->assign('title', 'BlogDemo');
-$smarty->display('example.tpl');
+$response = $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
+$response->send();

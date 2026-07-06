@@ -24,6 +24,12 @@ services:
     environment:
       - PHP_DIR_OWNER=1000
       - RUN_USER=1000
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=${MYSQL_DATABASE:-main_db}
+      - DB_USERNAME=${MYSQL_USER:-main}
+      - DB_PASSWORD=${MYSQL_PASSWORD:-main}
+      - APP_NAME=${APP_NAME}
     volumes:
       - .:/var/www
       - ./runtime/docker/php/data:/var/php

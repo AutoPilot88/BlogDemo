@@ -1,14 +1,136 @@
-$primary-color: #2b6cb0;
-$text-color: #1a202c;
+$color-header-bg: #3b5568;
+$color-text: #222222;
+$color-text-muted: #767676;
+$color-link: #3c6e8f;
+$color-border: #eaeaea;
+
+$container-width: 1140px;
 $spacing: 16px;
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  padding: $spacing * 2;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: $text-color;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: $color-text;
+  background: #ffffff;
+}
 
-  h1 {
-    color: $primary-color;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 $spacing;
+}
+
+.site-header {
+  background: $color-header-bg;
+  padding: $spacing $spacing;
+
+  &__logo {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.site-footer {
+  background: $color-header-bg;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  padding: ($spacing * 2) $spacing;
+  margin-top: $spacing * 2;
+  font-size: 13px;
+}
+
+.page {
+  padding: ($spacing * 2) 0;
+}
+
+.category {
+  margin-bottom: $spacing * 3;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-border;
+    padding-bottom: $spacing * 0.75;
+    margin-bottom: $spacing * 1.5;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  &__view-all {
+    font-size: 12px;
+    color: $color-text-muted;
+    text-decoration: underline;
+  }
+
+  &__posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing * 1.5;
+
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.post-card {
+  &__image-link {
+    display: block;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: #f2f2f2;
+  }
+
+  &__title {
+    margin: $spacing 0 4px;
+    font-size: 16px;
+    font-weight: 600;
+
+    a {
+      color: $color-link;
+    }
+  }
+
+  &__date {
+    margin: 0 0 $spacing * 0.5;
+    font-size: 12px;
+    color: $color-text-muted;
+  }
+
+  &__excerpt {
+    margin: 0 0 $spacing * 0.75;
+    font-size: 13px;
+    line-height: 1.5;
+    color: $color-text-muted;
+  }
+
+  &__continue {
+    display: inline-block;
+    font-size: 12px;
+    text-decoration: underline;
+    color: $color-text;
   }
 }
