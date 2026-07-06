@@ -10,6 +10,22 @@ class CategoryRepository
     {
     }
 
+    public function findByUuid(string $uuid): ?array
+    {
+        $stmt = $this->pdo->prepare(
+            'SELECT c.uuid, c.name, cd.description
+             FROM categories c
+             LEFT JOIN category_descriptions cd ON cd.category_uuid = c.uuid
+             WHERE c.uuid = :uuid'
+        );
+        $stmt->bindValue(':uuid', $uuid);
+        $stmt->execute();
+
+        $category = $stmt->fetch();
+
+        return $category === false ? null : $category;
+    }
+
     public function getCategoriesWithLatestPosts(int $postsPerCategory = 3): array
     {
         $categories = $this->pdo->query('SELECT uuid, name FROM categories ORDER BY name')->fetchAll();

@@ -6,7 +6,7 @@
             <section class="category">
                 <div class="category__header">
                     <h2 class="category__title">{$category.name}</h2>
-                    <a href="#" class="category__view-all">Показать все</a>
+                    <a href="/category/{$category.uuid}" class="category__view-all">Показать все</a>
                 </div>
 
                 <div class="category__posts">
