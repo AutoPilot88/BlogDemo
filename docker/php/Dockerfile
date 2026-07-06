@@ -9,6 +9,7 @@ RUN set -ex; \
     ln -sfn /usr/share/zoneinfo/${TZ} /etc/localtime && echo $TZ > /etc/timezone; \
     printf '[Date]\ndate.timezone="%s"\n', $TZ > /usr/local/etc/php/conf.d/tzone.ini; \
     apt-get update; \
+    apt-get install -y --no-install-recommends unzip; \
     rm -r /var/lib/apt/lists/*; \
     docker-php-ext-install pdo_mysql bcmath; \
     apt-get purge -y --auto-remove;

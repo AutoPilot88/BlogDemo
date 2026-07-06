@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `category_descriptions` (
     PRIMARY KEY (`id`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE INDEX IF NOT EXISTS `category_uuid_index` ON `category_descriptions` (`category_uuid`);
+CREATE INDEX `category_uuid_index` ON `category_descriptions` (`category_uuid`);
 
 
 -- Создаем таблицу публикаций
@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
     PRIMARY KEY (`uuid`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE INDEX IF NOT EXISTS `views_index` ON `posts` (`views`);
-CREATE INDEX IF NOT EXISTS `created_at_index` ON `posts` (`created_at`);
+CREATE INDEX `views_index` ON `posts` (`views`);
+CREATE INDEX `created_at_index` ON `posts` (`created_at`);
 
 
 -- Создаем таблицу изображений публикаций
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `post_images` (
     PRIMARY KEY (`uuid`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE INDEX IF NOT EXISTS `post_uuid_index` ON `post_images` (`post_uuid`);
+CREATE INDEX `post_uuid_index` ON `post_images` (`post_uuid`);
 
 
 -- Создаем таблицу описаний публикаций
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `post_descriptions` (
     PRIMARY KEY (`id`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE INDEX IF NOT EXISTS `post_uuid_index` ON `post_descriptions` (`post_uuid`);
+CREATE INDEX `post_uuid_index` ON `post_descriptions` (`post_uuid`);
 
 
 -- Создаем таблицу текстов публикаций
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `post_texts` (
     PRIMARY KEY (`id`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE INDEX IF NOT EXISTS `post_uuid_index` ON `post_texts` (`post_uuid`);
+CREATE INDEX `post_uuid_index` ON `post_texts` (`post_uuid`);
 
 -- Создаем таблицу текстов публикаций
 CREATE TABLE IF NOT EXISTS `post_categories` (
@@ -81,5 +81,5 @@ CREATE TABLE IF NOT EXISTS `post_categories` (
     PRIMARY KEY (`id`)
     ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE INDEX IF NOT EXISTS `post_uuid_index` ON `post_categories` (`post_uuid`);
-CREATE INDEX IF NOT EXISTS `category_uuid_index` ON `post_categories` (`category_uuid`);
+CREATE INDEX `post_uuid_index` ON `post_categories` (`post_uuid`);
+CREATE INDEX `category_uuid_index` ON `post_categories` (`category_uuid`);

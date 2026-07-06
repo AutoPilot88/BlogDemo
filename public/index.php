@@ -2,6 +2,8 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use Smarty\Smarty;
+
 $compileDir = __DIR__ . '/../runtime/smarty/compile';
 $cacheDir = __DIR__ . '/../runtime/smarty/cache';
 
